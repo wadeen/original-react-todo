@@ -28,3 +28,9 @@ body {
 #wrapper {
   flex: 1;
 }
+
+/* disabled設定 */
+.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}

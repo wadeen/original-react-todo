@@ -1,17 +1,25 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { ChangeEvent, useState } from 'react'
+import { useState } from 'react'
 import { PrimaryButton } from '../../atoms/button/PrimaryButton'
 import { LoginInputForm } from '../../molecules/Login/LoginInputForm'
 
 import Popup from 'reactjs-popup'
 import 'reactjs-popup/dist/index.css'
+import { useUserInfo } from '../../../hooks/users/useUserInfo'
 
 export const LoginForm = () => {
+  const { login } = useUserInfo()
+
   const [inputText, setInputText] = useState('')
 
-  const onchangeText = (e: React.ChangeEvent<HTMLInputElement>) =>
+  const onchangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value)
+  }
+
+  const onClickLogin = () => {
+    login(inputText)
+  }
 
   return (
     <div css={wrapper}>
@@ -41,7 +49,11 @@ export const LoginForm = () => {
           readOnly={true}
           value="password"
         />
-        <PrimaryButton name="ログイン" linkTo={'/todo'} />
+        <PrimaryButton
+          name="ログイン"
+          disabled={inputText === ''}
+          onClick={onClickLogin}
+        />
       </dl>
     </div>
   )
@@ -63,7 +75,6 @@ const wrapper = css`
 `
 
 const hint = css`
-  /* text-align: right; */
   margin: 0 auto;
   margin-top: -60px;
   position: absolute;

@@ -1,21 +1,23 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 
-import React, { FC, memo } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 
 type Props = {
   name: string
-  linkTo: string
+  disabled: boolean
+  onClick: () => void
 }
 
-export const PrimaryButton: FC<Props> = memo(({ name, linkTo }) => {
-  return (
-    <button type="button" css={button}>
-      <Link to={linkTo}>{name}</Link>
-    </button>
-  )
-})
+export const PrimaryButton: React.FC<Props> = React.memo(
+  ({ name, disabled, onClick }) => {
+    return (
+      <button type="button" disabled={disabled} css={button} onClick={onClick}>
+        {name}
+      </button>
+    )
+  }
+)
 
 const button = css`
   font-size: 2rem;
@@ -26,10 +28,16 @@ const button = css`
   margin: 60px auto 0;
   width: 200px;
   height: 50px;
-  line-height: 30px;
+  line-height: 50px;
   border-radius: 10px;
-  transition: .3s ease;
-  :hover  {
-    opacity: .8;
+  transition: 0.3s ease;
+  :hover {
+    opacity: 0.8;
+  }
+  &:disabled {
+    background-color: gray;
+    opacity: 1;
+    cursor: default;
+    cursor: not-allowed;
   }
 `

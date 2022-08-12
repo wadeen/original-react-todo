@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { FC, memo } from 'react'
+import { ChangeEventHandler, FC, memo } from 'react'
 
 type Props = {
   type: string
   title: string
   value?: string
-  readOnly: any
-  onChange?: any
+  readOnly: boolean | undefined
+  onChange?: ChangeEventHandler<HTMLInputElement> | undefined
 }
 
 export const LoginInputForm: FC<Props> = memo(
@@ -16,7 +16,12 @@ export const LoginInputForm: FC<Props> = memo(
       <div css={wrapper}>
         <dt>{title}</dt>
         <dd>
-          <input type={type} readOnly={readOnly} onChange={onChange}  value={value}/>
+          <input
+            type={type}
+            readOnly={readOnly}
+            onChange={onChange}
+            value={value}
+          />
         </dd>
       </div>
     )
