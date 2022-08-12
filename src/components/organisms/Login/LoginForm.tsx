@@ -4,6 +4,9 @@ import { ChangeEvent, useState } from 'react'
 import { PrimaryButton } from '../../atoms/button/PrimaryButton'
 import { LoginInputForm } from '../../molecules/Login/LoginInputForm'
 
+import Popup from 'reactjs-popup'
+import 'reactjs-popup/dist/index.css'
+
 export const LoginForm = () => {
   const [inputText, setInputText] = useState('')
 
@@ -21,6 +24,16 @@ export const LoginForm = () => {
           onChange={onchangeText}
           value={inputText}
         />
+        <Popup
+          trigger={<button css={hint}>💡ヒント</button>}
+          position="top center"
+        >
+          <div css={hintText}>
+            1~9の好きな数字を
+            <br />
+            ログインIDに入力して下さい
+          </div>
+        </Popup>
 
         <LoginInputForm
           type={'password'}
@@ -40,10 +53,27 @@ const wrapper = css`
   border: 2px solid teal;
   border-radius: 20px;
   padding: 50px 30px 60px;
+  position: relative;
   h2 {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 40px;
     text-align: center;
   }
+`
+
+const hint = css`
+  /* text-align: right; */
+  margin: 0 auto;
+  margin-top: -60px;
+  position: absolute;
+  top: calc(50% + 30px);
+  right: 30px;
+  padding-right: 30px;
+  font-weight: 700;
+  outline: none;
+`
+
+const hintText = css`
+  font-size: 1.4rem;
 `

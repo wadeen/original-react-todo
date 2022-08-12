@@ -43,4 +43,8 @@ const back = css`
   text-align: center;
   color: blue;
   text-decoration: underline;
+  transition: 0.3s ease;
+  :hover {
+    opacity: 0.8;
+  }
 `
