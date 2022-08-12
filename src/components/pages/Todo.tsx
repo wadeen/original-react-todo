@@ -1,7 +1,11 @@
 import React from 'react'
+import { Head } from '../organisms/Head'
 
 export const Todo = () => {
   return (
-    <div>Todo</div>
+    <>
+      <Head title={'Todoリスト'} />
+      <p>todoリスト</p>
+    </>
   )
 }

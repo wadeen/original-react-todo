@@ -1,7 +1,11 @@
 import React from 'react'
+import { Head } from '../organisms/Head';
 
 export const Help = () => {
   return (
-    <div>Help</div>
+    <>
+    <Head title={"ヘルプ"}/>
+    <p>ヘルプ</p>
+    </>
   )
 }

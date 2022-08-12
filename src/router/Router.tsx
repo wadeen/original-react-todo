@@ -1,8 +1,8 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Login } from "../components/pages/Login";
-import { Todo } from "../components/pages/Todo";
-import { UserManagement } from "../components/pages/UserManagement";
-import { Help } from "../components/pages/Help";
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Login } from '../components/pages/Login'
+import { Todo } from '../components/pages/Todo'
+import { UserManagement } from '../components/pages/UserManagement'
+import { Help } from '../components/pages/Help'
 
 export const Router = () => {
   return (
@@ -16,5 +16,5 @@ export const Router = () => {
         <Route path="/help" element={<Help />} />
       </Routes>
     </BrowserRouter>
-  );
-};
+  )
+}
