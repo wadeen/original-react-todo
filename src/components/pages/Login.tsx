@@ -1,12 +1,11 @@
-import React from 'react'
-import { Head } from '../organisms/Head';
-import { Header } from '../organisms/Header';
+import { Head } from '../organisms/Head'
+import { LoginForm } from '../organisms/Login/LoginForm'
 
 export const Login = () => {
   return (
     <>
-    <Head title={"ログイン"}/>
-      <h2>ログイン画面</h2>
+      <Head title={'ログイン'} />
+      <LoginForm />
     </>
   )
 }
