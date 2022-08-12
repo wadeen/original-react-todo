@@ -6,15 +6,13 @@ import { Help } from '../components/pages/Help'
 
 export const Router = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/">
-          <Route index element={<Login />} />
-        </Route>
-        <Route path="/todo" element={<Todo />} />
-        <Route path="/user_management" element={<UserManagement />} />
-        <Route path="/help" element={<Help />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/">
+        <Route index element={<Login />} />
+      </Route>
+      <Route path="/todo" element={<Todo />} />
+      <Route path="/user_management" element={<UserManagement />} />
+      <Route path="/help" element={<Help />} />
+    </Routes>
   )
 }
