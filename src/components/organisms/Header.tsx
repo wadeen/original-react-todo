@@ -48,6 +48,7 @@ const headerContainer = css`
   width: min(100%, 1400px);
   margin: 0 auto;
   height: 100%;
+  padding: 0 25px;
 `
 
 const headerLeft = css`

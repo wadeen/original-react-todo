@@ -1,15 +1,33 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { ChangeEvent, useState } from 'react'
 import { PrimaryButton } from '../../atoms/button/PrimaryButton'
 import { LoginInputForm } from '../../molecules/Login/LoginInputForm'
 
 export const LoginForm = () => {
+  const [inputText, setInputText] = useState('')
+
+  const onchangeText = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setInputText(e.target.value)
+
   return (
     <div css={wrapper}>
       <h2>ログインフォーム</h2>
       <dl>
-        <LoginInputForm type={'text'} title={'ログインID'} />
-        <LoginInputForm type={'password'} title={'パスワード'} />
+        <LoginInputForm
+          type={'text'}
+          title={'ログインID'}
+          readOnly={false}
+          onChange={onchangeText}
+          value={inputText}
+        />
+
+        <LoginInputForm
+          type={'password'}
+          title={'パスワード'}
+          readOnly={true}
+          value="paassword"
+        />
         <PrimaryButton name="ログイン" linkTo={'/todo'} />
       </dl>
     </div>
