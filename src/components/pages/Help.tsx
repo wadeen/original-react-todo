@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { Link } from 'react-router-dom'
 import { Head } from '../organisms/Head'
 
 export const Help = () => {
@@ -13,6 +14,9 @@ export const Help = () => {
           <br />
           パスワードは自動入力されます。
         </p>
+        <div css={back}>
+          <Link to="/">ログインページへ戻る</Link>
+        </div>
       </div>
     </>
   )
@@ -26,11 +30,17 @@ const wrapper = css`
   h2 {
     font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 30px
+    margin-bottom: 30px;
   }
   p {
     font-size: 1.8rem;
     line-height: 1.4;
-
   }
+`
+
+const back = css`
+  margin-top: 30px;
+  text-align: center;
+  color: blue;
+  text-decoration: underline;
 `

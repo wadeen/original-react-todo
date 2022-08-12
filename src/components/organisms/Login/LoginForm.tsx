@@ -26,7 +26,7 @@ export const LoginForm = () => {
           type={'password'}
           title={'パスワード'}
           readOnly={true}
-          value="paassword"
+          value="password"
         />
         <PrimaryButton name="ログイン" linkTo={'/todo'} />
       </dl>
