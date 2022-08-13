@@ -3,28 +3,32 @@ import React from 'react'
 import { css } from '@emotion/react'
 
 type Props = {
-  completeText: string
+  completeText: string[]
 }
 
 export const CompleteTask: React.FC<Props> = React.memo(({completeText}) => {
 
+  // console.log(completeText);
+
   return (
-    <div css={incompleteTask}>
+    <div css={completeTask}>
       <h3>完了したタスク</h3>
       <ul>
-        <li><input type="checkbox" id="1"/><label htmlFor='1'>散歩する</label></li>
-        <li><input type="checkbox" id="2"/><label htmlFor='2'>プログラミング学習</label></li>
-        <li><input type="checkbox" id="3"/><label htmlFor='3'>筋トレをする</label></li>
+      {completeText.map((todo) => (
+        <li><input type="checkbox" id="1"/><label htmlFor='1'>{todo}</label></li>
+      ))}
+        {/* <li><input type="checkbox" id="2"/><label htmlFor='2'>プログラミング学習</label></li>
+        <li><input type="checkbox" id="3"/><label htmlFor='3'>筋トレをする</label></li> */}
       </ul>
       <div css={remove}>
-        <button disabled>選択した項目を削除</button>
+        <button disabled={true}>選択した項目を削除</button>
         <button>完了したタスクを全て削除</button>
       </div>
     </div>
   )
 })
 
-const incompleteTask = css`
+const completeTask = css`
   border: 2px solid teal;
   padding: 30px 60px 60px;
   border-radius: 5px;

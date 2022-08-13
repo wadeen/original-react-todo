@@ -2,24 +2,25 @@
 import React from 'react'
 import { css } from '@emotion/react'
 import { Head } from '../organisms/Head'
+import { useState } from 'react'
 
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { TodoInputForm } from '../molecules/Todo/TodoInputForm'
-import { InCompleteTak } from '../organisms/Todo/InCompleteTask'
+import { InCompleteTask } from '../organisms/Todo/InCompleteTask'
 import { Spacer } from '../atoms/spacer/Spacer'
 import { CompleteTask } from '../organisms/Todo/CompleteTask'
-import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 export const Todo: React.FC = React.memo(() => {
   // 入力ボタンの制御
   const [inputButtonDisabled, setInputButtonDisabled] = useState(true)
   // 入力したテキスト
-  const [inputText, setInputText] = useState('')
+  const [inputText, setInputText] = useState<any>()
   // 未完了テキスト(入力ボタン押下して確定したテキスト)
-  const [inCompleteText, seetInCompleteText] = useState('')
+  const [inCompleteText, setInCompleteText] = useState<string[]>([])
   // 完了したテキスト
-  const [completeText, seetCompleteText] = useState('')
+  const [completeText, setCompleteText] = useState<string[]>([])
 
   // 日時の取得
   let now: any = new Date()
@@ -29,7 +30,7 @@ export const Todo: React.FC = React.memo(() => {
   const onClickInutAdd = () => {
     if (inputText == '') return
     setInputButtonDisabled(false)
-    seetInCompleteText(inputText)
+    setInCompleteText([...inCompleteText, inputText])
     setInputText('')
   }
 
@@ -45,7 +46,12 @@ export const Todo: React.FC = React.memo(() => {
           inputButtonDisabled={inputText === ''}
         />
         <Spacer size={60} />
-        <InCompleteTak inCompleteText={inCompleteText} />
+        <InCompleteTask
+          inCompleteText={inCompleteText}
+          setInCompleteText={setInCompleteText}
+          completeText={completeText} 
+          setCompleteText={setCompleteText}
+        />
         <Spacer size={60} />
         <CompleteTask completeText={completeText} />
       </div>

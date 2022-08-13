@@ -1,25 +1,50 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react'
 import { css } from '@emotion/react'
+import { v4 as uuidv4 } from 'uuid'
 
 type Props = {
-  inCompleteText: string
+  inCompleteText: string[]
+  setInCompleteText: any //✋
+  completeText: string[]
+  setCompleteText: any //✋
 }
 
-export const InCompleteTak: React.FC<Props> = React.memo(({inCompleteText}) => {
+export const InCompleteTask: React.FC<Props> = React.memo(
+  ({ inCompleteText, completeText, setCompleteText, setInCompleteText }) => {
+    // 完了ボタン押下
+    const onClickComplete = (todo: string) => {
+      setCompleteText([...completeText, todo])
+      setInCompleteText(
+        inCompleteText.filter((todoTarget: string) => todo !== todoTarget)
+      )
+    }
 
-  return (
-    <div css={incompleteTask}>
-      <h3>未完了のタスク</h3>
-      <ul>
-        <li>散歩する</li>
-        <li>プログラミング学習</li>
-        <li>筋トレをする</li>
-      </ul>
-      <p>⚠️3件のタスクが残っています</p>
-    </div>
-  )
-})
+    // 残りのタスクの数
+    const inCompleteLength = inCompleteText.length
+    return (
+      <div css={incompleteTask}>
+        <h3>未完了のタスク</h3>
+        <ul>
+          {inCompleteText.map((todo: any) => (
+            <li key={uuidv4()}>
+              {todo}
+              <button
+                css={completeButton}
+                onClick={() => onClickComplete(todo)}
+              >
+                完了
+              </button>
+            </li>
+          ))}
+        </ul>
+        {inCompleteLength === 0 || (
+          <p>⚠️{inCompleteLength}件のタスクが残っています</p>
+        )}
+      </div>
+    )
+  }
+)
 
 const incompleteTask = css`
   border: 2px solid teal;
@@ -45,7 +70,7 @@ const incompleteTask = css`
         margin-bottom: 15px;
       }
       &::before {
-        content: "◉";
+        content: '◉';
         margin-right: 12px;
       }
     }
@@ -57,4 +82,16 @@ const incompleteTask = css`
     right: 20px;
     bottom: 10px;
   }
+`
+
+const completeButton = css`
+  padding: 4px 8px;
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  background-color: #0d6efd;
+  border-radius: 4px;
+  color: #fff;
+  margin-left: 20px;
+  white-space: nowrap;
 `
