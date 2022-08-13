@@ -17,6 +17,7 @@ export const useUserInfo = () => {
       .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then((result) => {
         if (result.data.id) {
+          notifyLoginSuccess()
           nav('/todo')
         } else {
           notifyLoginfailed()

@@ -8,13 +8,11 @@ export const Header = () => {
     <header css={header}>
       <div css={headerContainer}>
         <div css={headerLeft}>
-          {/* <a href="#"> */}
           <Link to="/todo">
             <h1>
               <img src="../img/todoLogo.png" alt="todoロゴ" />
             </h1>
           </Link>
-          {/* </a> */}
         </div>
 
         <nav css={headerRight}>
@@ -38,7 +36,8 @@ export const Header = () => {
 const header = css`
   width: 100%;
   height: 120px;
-  background-color: whitesmoke;
+  background-color:#fff;
+  box-shadow: 0 1px 40px 0 rgba(0, 0, 0, 0.05);
 `
 
 const headerContainer = css`
