@@ -8,7 +8,6 @@ type Props = {
 
 export const InCompleteTak: React.FC<Props> = React.memo(({inCompleteText}) => {
 
-  console.log(inCompleteText);
   return (
     <div css={incompleteTask}>
       <h3>未完了のタスク</h3>

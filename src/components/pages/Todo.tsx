@@ -21,6 +21,10 @@ export const Todo: React.FC = React.memo(() => {
   // 完了したテキスト
   const [completeText, seetCompleteText] = useState('')
 
+  // 日時の取得
+  let now: any = new Date()
+  let today = `${now.getMonth() + 1}/${now.getDate()}`
+
   // 入力ボタン押下
   const onClickInutAdd = () => {
     if (inputText == '') return
@@ -33,7 +37,7 @@ export const Todo: React.FC = React.memo(() => {
     <>
       <Head title={'Todoリスト'} />
       <div css={wrapper}>
-        <h2>本日のタスク</h2>
+        <h2>【{today}】本日のタスク</h2>
         <TodoInputForm
           inputText={inputText}
           setInputText={setInputText}
