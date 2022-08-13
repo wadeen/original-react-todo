@@ -3,27 +3,29 @@ import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { User } from '../../types/User'
 
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 export const useUserInfo = () => {
   const nav = useNavigate()
+
+  const notifyLoginSuccess = () => toast('ログインに成功しました!')
+  const notifyLoginfailed = () => toast('ユーザがー見つかりませんでした')
+
   const login = useCallback((id: number | string) => {
     axios
-      .get<User[]>('https://jsonplaceholder.typicode.com/users')
+      .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then((result) => {
-        result.data.filter((user) => {
-          if (user.id == id) {
-            nav('/todo')
-          } else {
-            return(
-              alert('正しいログインIDを入力して下さい: 1~9')
-            )
-          }
-          return false;
-        })
+        if (result.data.id) {
+          nav('/todo')
+        } else {
+          notifyLoginfailed()
+        }
       })
       .catch(() => {
-        alert('ユーザー情報の取得に失敗しました。')
+        notifyLoginfailed()
       })
   }, [])
 
-  return { login }
+  return { login, notifyLoginSuccess }
 }

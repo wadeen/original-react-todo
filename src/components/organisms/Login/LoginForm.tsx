@@ -8,8 +8,12 @@ import Popup from 'reactjs-popup'
 import 'reactjs-popup/dist/index.css'
 import { useUserInfo } from '../../../hooks/users/useUserInfo'
 
+import { ToastContainer } from 'react-toastify'
+
+
+
 export const LoginForm = () => {
-  const { login } = useUserInfo()
+  const { login, notifyLoginSuccess } = useUserInfo()
 
   const [inputText, setInputText] = useState('')
 
@@ -20,6 +24,7 @@ export const LoginForm = () => {
   const onClickLogin = () => {
     login(inputText)
   }
+
 
   return (
     <div css={wrapper}>
@@ -37,7 +42,7 @@ export const LoginForm = () => {
           position="top center"
         >
           <div css={hintText}>
-            1~9の好きな数字を
+            1~10の好きな数字を
             <br />
             ログインIDに入力して下さい
           </div>
@@ -55,6 +60,7 @@ export const LoginForm = () => {
           onClick={onClickLogin}
         />
       </dl>
+      <ToastContainer />
     </div>
   )
 }
