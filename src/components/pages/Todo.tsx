@@ -8,19 +8,42 @@ import 'react-toastify/dist/ReactToastify.css'
 import { TodoInputForm } from '../molecules/Todo/TodoInputForm'
 import { InCompleteTak } from '../organisms/Todo/InCompleteTask'
 import { Spacer } from '../atoms/spacer/Spacer'
-import { CompleteTask } from '../organisms/Todo/CompleteTask';
+import { CompleteTask } from '../organisms/Todo/CompleteTask'
+import { useState } from 'react'
 
 export const Todo: React.FC = React.memo(() => {
+  // 入力ボタンの制御
+  const [inputButtonDisabled, setInputButtonDisabled] = useState(true)
+  // 入力したテキスト
+  const [inputText, setInputText] = useState('')
+  // 未完了テキスト(入力ボタン押下して確定したテキスト)
+  const [inCompleteText, seetInCompleteText] = useState('')
+  // 完了したテキスト
+  const [completeText, seetCompleteText] = useState('')
+
+  // 入力ボタン押下
+  const onClickInutAdd = () => {
+    if (inputText == '') return
+    setInputButtonDisabled(false)
+    seetInCompleteText(inputText)
+    setInputText('')
+  }
+
   return (
     <>
       <Head title={'Todoリスト'} />
       <div css={wrapper}>
         <h2>本日のタスク</h2>
-        <TodoInputForm />
-        <Spacer size={60}/>
-        <InCompleteTak />
-        <Spacer size={60}/>
-        <CompleteTask />
+        <TodoInputForm
+          inputText={inputText}
+          setInputText={setInputText}
+          onClick={onClickInutAdd}
+          inputButtonDisabled={inputText === ''}
+        />
+        <Spacer size={60} />
+        <InCompleteTak inCompleteText={inCompleteText} />
+        <Spacer size={60} />
+        <CompleteTask completeText={completeText} />
       </div>
       <ToastContainer />
     </>

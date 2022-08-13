@@ -2,14 +2,29 @@
 import React from 'react'
 import { css } from '@emotion/react'
 
-export const TodoInputForm: React.FC = React.memo(() => {
-  return (
-    <div css={inputArea}>
-      <input type="text" />
-      <button type="button">入力</button>
-    </div>
-  )
-})
+type Props = {
+  inputText: string
+  setInputText: any //✋
+  onClick: () => void
+  inputButtonDisabled: boolean
+}
+
+export const TodoInputForm: React.FC<Props> = React.memo(
+  ({ inputText, setInputText, onClick, inputButtonDisabled }) => {
+    const onChangeInputText = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputText(e.target.value)
+    }
+
+    return (
+      <div css={inputArea}>
+        <input type="text" value={inputText} onChange={onChangeInputText} />
+        <button type="button" onClick={onClick} disabled={inputButtonDisabled}>
+          入力
+        </button>
+      </div>
+    )
+  }
+)
 
 const inputArea = css`
   display: flex;
@@ -26,12 +41,15 @@ const inputArea = css`
     border: 1px solid teal;
   }
   button {
-    width: 60px;
+    width: 70px;
     background-color: teal;
     height: 40px;
     line-height: 40px;
     text-align: center;
     color: #fff;
     border-radius: 6px;
+    &:disabled {
+      opacity: 0.5;
+    }
   }
 `

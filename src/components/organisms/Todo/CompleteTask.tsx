@@ -2,7 +2,13 @@
 import React from 'react'
 import { css } from '@emotion/react'
 
-export const CompleteTask: React.FC = React.memo(() => {
+type Props = {
+  completeText: string
+}
+
+export const CompleteTask: React.FC<Props> = React.memo(({completeText}) => {
+
+  console.log(completeText);
   return (
     <div css={incompleteTask}>
       <h3>完了したタスク</h3>
