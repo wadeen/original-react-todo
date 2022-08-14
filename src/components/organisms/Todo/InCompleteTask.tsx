@@ -5,9 +5,9 @@ import { v4 as uuidv4 } from 'uuid'
 
 type Props = {
   inCompleteText: string[]
-  setInCompleteText: any //✋
+  setInCompleteText: React.Dispatch<React.SetStateAction<string[]>>
   completeText: string[]
-  setCompleteText: any //✋
+  setCompleteText: React.Dispatch<React.SetStateAction<string[]>>
 }
 
 export const InCompleteTask: React.FC<Props> = React.memo(

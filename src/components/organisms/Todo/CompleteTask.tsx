@@ -4,8 +4,8 @@ import { css } from '@emotion/react'
 
 type Props = {
   completeText: string[]
-  setCompleteText: any //✋
-  checkedRemoveButton: any //✋
+  setCompleteText: React.Dispatch<React.SetStateAction<string[]>>
+  checkedRemoveButton: boolean
 }
 
 export const CompleteTask: React.FC<Props> = React.memo(
@@ -143,4 +143,3 @@ const remove = css`
     }
   }
 `
-

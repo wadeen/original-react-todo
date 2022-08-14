@@ -4,7 +4,7 @@ import { css } from '@emotion/react'
 
 type Props = {
   inputText: string
-  setInputText: any //✋
+  setInputText: React.Dispatch<React.SetStateAction<string>>
   onClick: () => void
   disabled: boolean
 }
