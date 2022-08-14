@@ -2,15 +2,17 @@
 import React from 'react'
 import { css } from '@emotion/react'
 
+// import { inputButtonDisabled } from "../../pages/Todo";
+
 type Props = {
   inputText: string
   setInputText: any //✋
   onClick: () => void
-  inputButtonDisabled: boolean
+  disabled: boolean
 }
 
 export const TodoInputForm: React.FC<Props> = React.memo(
-  ({ inputText, setInputText, onClick, inputButtonDisabled }) => {
+  ({ inputText, setInputText, onClick, disabled = true }) => {
     const onChangeInputText = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputText(e.target.value)
     }
@@ -18,7 +20,7 @@ export const TodoInputForm: React.FC<Props> = React.memo(
     return (
       <div css={inputArea}>
         <input type="text" value={inputText} onChange={onChangeInputText} />
-        <button type="button" onClick={onClick} disabled={inputButtonDisabled}>
+        <button type="button" onClick={onClick} disabled={disabled}>
           入力
         </button>
       </div>

@@ -2,7 +2,7 @@
 import React from 'react'
 import { css } from '@emotion/react'
 import { Head } from '../organisms/Head'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -13,7 +13,7 @@ import { CompleteTask } from '../organisms/Todo/CompleteTask'
 
 export const Todo: React.FC = React.memo(() => {
   // 入力ボタンの制御
-  const [inputButtonDisabled, setInputButtonDisabled] = useState(false)
+  // const [disabled, setDisabled] = useState(true)
   // 入力したテキスト
   const [inputText, setInputText] = useState<any>()
   // 未完了テキスト(入力ボタン押下して確定したテキスト)
@@ -28,7 +28,6 @@ export const Todo: React.FC = React.memo(() => {
   // 入力ボタン押下
   const onClickInutAdd = () => {
     if (inputText == '') return
-    setInputButtonDisabled(true)
     setInCompleteText([...inCompleteText, inputText])
     setInputText('')
   }
@@ -42,7 +41,7 @@ export const Todo: React.FC = React.memo(() => {
           inputText={inputText}
           setInputText={setInputText}
           onClick={onClickInutAdd}
-          inputButtonDisabled={inputText === ''}
+          disabled={inputText === undefined || inputText === ''}
         />
         <Spacer size={60} />
         <InCompleteTask

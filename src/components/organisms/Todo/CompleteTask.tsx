@@ -1,13 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react'
 import { css } from '@emotion/react'
-import { useState } from 'react'
 
 type Props = {
   completeText: string[]
   setCompleteText: any //✋
-  // checked: any //✋
-  // onchange:  any //✋
   checkedRemoveButton: any //✋
 }
 
@@ -32,7 +29,7 @@ export const CompleteTask: React.FC<Props> = React.memo(
           const removeText = item.textContent
           newTodo = [...newTodo, removeText] //チェック入っていないものだけ取得
         }
-        console.log((item.querySelector('input').checked = false)) //削除後全てチェック外す
+        item.querySelector('input').checked = false //削除後全てチェック外す
         setCompleteText(newTodo)
       })
     }
@@ -44,7 +41,7 @@ export const CompleteTask: React.FC<Props> = React.memo(
           {completeText.map((todo: string, index: any) => (
             <>
               <li key={index}>
-                <label className={'todoCheckboxLabel'}>
+                <label className={'todoCheckboxLabel'} css={label}>
                   <input type="checkbox" className={'checkbox'} />
                   {todo}
                 </label>
@@ -93,6 +90,15 @@ const completeTask = css`
         margin-right: 15px;
       }
     }
+  }
+`
+
+const label = css`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  input {
+    cursor: pointer;
   }
 `
 
