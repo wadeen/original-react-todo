@@ -1,32 +1,69 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react'
 import { css } from '@emotion/react'
+import { useState } from 'react'
 
 type Props = {
   completeText: string[]
+  setCompleteText: any //✋
+  // checked: any //✋
+  // onchange:  any //✋
+  checkedRemoveButton: any //✋
 }
 
-export const CompleteTask: React.FC<Props> = React.memo(({completeText}) => {
+export const CompleteTask: React.FC<Props> = React.memo(
+  ({ completeText, checkedRemoveButton, setCompleteText }) => {
+    // 確認メッセージ後全て削除
+    const allTaskRemove = () => {
+      if (window.confirm('本当に全て削除してもいいですか？')) {
+        setCompleteText([])
+      }
+    }
 
-  // console.log(completeText);
+    // 削除
+    const checkedRemove = () => {
+      const targetCheckbox = [
+        ...document.querySelectorAll('.todoCheckboxLabel'),
+      ]
+      let newTodo: string[] = []
+      // console.log(targetCheckbox)
+      targetCheckbox.map((item: any) => {
+        if (item.querySelector('input').checked === false) {
+          const removeText = item.textContent
+          newTodo = [...newTodo, removeText] //チェック入っていないものだけ取得
+        }
+        console.log((item.querySelector('input').checked = false)) //削除後全てチェック外す
+        setCompleteText(newTodo)
+      })
+    }
 
-  return (
-    <div css={completeTask}>
-      <h3>完了したタスク</h3>
-      <ul>
-      {completeText.map((todo) => (
-        <li><input type="checkbox" id="1"/><label htmlFor='1'>{todo}</label></li>
-      ))}
-        {/* <li><input type="checkbox" id="2"/><label htmlFor='2'>プログラミング学習</label></li>
-        <li><input type="checkbox" id="3"/><label htmlFor='3'>筋トレをする</label></li> */}
-      </ul>
-      <div css={remove}>
-        <button disabled={true}>選択した項目を削除</button>
-        <button>完了したタスクを全て削除</button>
+    return (
+      <div css={completeTask}>
+        <h3>完了したタスク</h3>
+        <ul>
+          {completeText.map((todo: string, index: any) => (
+            <>
+              <li key={index}>
+                <label className={'todoCheckboxLabel'}>
+                  <input type="checkbox" className={'checkbox'} />
+                  {todo}
+                </label>
+              </li>
+            </>
+          ))}
+        </ul>
+        <div css={remove}>
+          <button disabled={checkedRemoveButton} onClick={checkedRemove}>
+            選択した項目を削除
+          </button>
+          <button disabled={checkedRemoveButton} onClick={allTaskRemove}>
+            完了したタスクを全て削除
+          </button>
+        </div>
       </div>
-    </div>
-  )
-})
+    )
+  }
+)
 
 const completeTask = css`
   border: 2px solid teal;
@@ -59,7 +96,6 @@ const completeTask = css`
   }
 `
 
-
 const remove = css`
   display: flex;
   align-items: center;
@@ -74,8 +110,7 @@ const remove = css`
       color: red;
     }
     &:disabled {
-      opacity: .5;
+      opacity: 0.5;
     }
   }
-
-`;
+`

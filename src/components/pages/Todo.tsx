@@ -2,7 +2,7 @@
 import React from 'react'
 import { css } from '@emotion/react'
 import { Head } from '../organisms/Head'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -10,11 +10,10 @@ import { TodoInputForm } from '../molecules/Todo/TodoInputForm'
 import { InCompleteTask } from '../organisms/Todo/InCompleteTask'
 import { Spacer } from '../atoms/spacer/Spacer'
 import { CompleteTask } from '../organisms/Todo/CompleteTask'
-import { v4 as uuidv4 } from 'uuid'
 
 export const Todo: React.FC = React.memo(() => {
   // 入力ボタンの制御
-  const [inputButtonDisabled, setInputButtonDisabled] = useState(true)
+  const [inputButtonDisabled, setInputButtonDisabled] = useState(false)
   // 入力したテキスト
   const [inputText, setInputText] = useState<any>()
   // 未完了テキスト(入力ボタン押下して確定したテキスト)
@@ -29,7 +28,7 @@ export const Todo: React.FC = React.memo(() => {
   // 入力ボタン押下
   const onClickInutAdd = () => {
     if (inputText == '') return
-    setInputButtonDisabled(false)
+    setInputButtonDisabled(true)
     setInCompleteText([...inCompleteText, inputText])
     setInputText('')
   }
@@ -49,11 +48,15 @@ export const Todo: React.FC = React.memo(() => {
         <InCompleteTask
           inCompleteText={inCompleteText}
           setInCompleteText={setInCompleteText}
-          completeText={completeText} 
+          completeText={completeText}
           setCompleteText={setCompleteText}
         />
         <Spacer size={60} />
-        <CompleteTask completeText={completeText} />
+        <CompleteTask
+          completeText={completeText}
+          checkedRemoveButton={completeText.length === 0}
+          setCompleteText={setCompleteText}
+        />
       </div>
       <ToastContainer />
     </>
