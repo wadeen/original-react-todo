@@ -26,5 +26,8 @@ React学習中で、アウトプットのためにToDoアプリを制作しま�
 ## 開発者
 [わでぃん](https://github.com/wadeen)
 
+## 公開URL
+http://portfolio.goo-tech.net/react-todo/
+
 <!-- ### `npm start` -->
 

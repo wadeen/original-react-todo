@@ -6,7 +6,7 @@ import { Router } from './router/Router'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/react-todo/">
       <HelmetProvider>
         <RecoilRoot>
           <HeaderBasicLayout>
