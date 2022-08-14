@@ -31,6 +31,13 @@ const button = css`
   line-height: 50px;
   border-radius: 10px;
   transition: 0.3s ease;
+  @media screen and (max-width: 767px) {
+    font-size: 1.6rem;
+    width: 160px;
+    height: 40px;
+    line-height: 40px;
+    margin: 40px auto 0;
+  }
   :hover {
     opacity: 0.8;
   }

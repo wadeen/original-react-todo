@@ -59,12 +59,19 @@ const incompleteTask = css`
   border-radius: 5px;
   position: relative;
   background-color: #fff;
+  @media screen and (max-width: 767px) {
+    padding: 20px 40px 40px;
+  }
   h3 {
     font-size: 2.6rem;
     font-weight: 700;
     list-style: 0.05;
     text-align: center;
     margin-bottom: 30px;
+    @media screen and (max-width: 767px) {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
   }
   ul {
     min-height: 80px;
@@ -73,6 +80,9 @@ const incompleteTask = css`
       font-weight: 500;
       display: flex;
       align-items: center;
+      @media screen and (max-width: 767px) {
+        font-size: 1.6rem;
+      }
       &:not(:last-child) {
         margin-bottom: 15px;
       }
@@ -88,6 +98,11 @@ const notask = css`
   text-align: center;
   margin-bottom: -30px;
   padding: 20px 10px;
+  @media screen and (max-width: 767px) {
+    margin-bottom: -20px;
+    padding: 20px 10px;
+    font-size: 1.4rem;
+  }
 `
 
 const tasks = css`
@@ -96,12 +111,15 @@ const tasks = css`
   position: absolute;
   right: 20px;
   bottom: 10px;
+  @media screen and (max-width: 767px) {
+    font-size: 1.2rem;
+    bottom: 5px;
+  }
 `
 
 const completeButton = css`
   font-size: 1.5rem;
   padding: 4px 8px;
-  width: 50px;
   height: 25px;
   text-align: center;
   background-color: #0d6efd;
@@ -109,4 +127,10 @@ const completeButton = css`
   color: #fff;
   margin-left: 20px;
   white-space: nowrap;
+  @media screen and (max-width: 767px) {
+    font-size: 1.4rem;
+    height: 22px;
+    line-height: 22px;
+    padding: 0 6px;
+  }
 `

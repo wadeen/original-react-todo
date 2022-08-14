@@ -6,9 +6,8 @@ import { ChangeButton } from '../atoms/button/ChangeButton'
 import { useRecoilState } from 'recoil'
 import { userState } from '../../store/userState'
 
-// Recoil: ログイン有無の状態監視
-
 export const UserManagement = () => {
+  // Recoil: ログイン有無の状態監視
   const [loginState, setLoginState] = useRecoilState(userState)
 
   return (
@@ -60,20 +59,35 @@ const wrapper = css`
   width: min(100%, 600px);
   margin: 60px auto;
   background-color: #fff;
+  @media screen and (max-width: 767px) {
+    width: calc(100% - 40px);
+  }
   h2 {
     font-size: 3rem;
     text-align: center;
     font-weight: 700;
     line-height: 2;
     border-bottom: 1px solid teal;
+    @media screen and (max-width: 767px) {
+      font-size: 2.4rem;
+    }
+  }
+  dl {
+    dt {
+      @media screen and (max-width: 767px) {
+        font-size: 1.4rem;
+      }
+    }
   }
 `
 
 const settings = css`
-  /* background-color: orange; */
   padding: 50px;
   width: 60%;
   margin: 0 auto;
+  @media screen and (max-width: 767px) {
+    padding: 30px 20px 20px;
+  }
   div {
     display: flex;
     align-items: center;
@@ -90,10 +104,16 @@ const loginUser = css`
   justify-content: center;
   margin-top: 30px;
   font-size: 2rem;
+  @media screen and (max-width: 767px) {
+    font-size: 1.6rem;
+  }
   li {
     &:last-child {
       font-size: 2.6rem;
       font-weight: 700;
+      @media screen and (max-width: 767px) {
+        font-size: 2.2rem;
+      }
     }
   }
 `

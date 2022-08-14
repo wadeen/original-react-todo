@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { PrimaryButton } from '../../atoms/button/PrimaryButton'
 import { LoginInputForm } from '../../molecules/Login/LoginInputForm'
 
@@ -26,7 +26,7 @@ export const LoginForm = () => {
   return (
     <div css={wrapper}>
       <h2>ログイン</h2>
-      <dl>
+      <div>
         <LoginInputForm
           type={'text'}
           title={'ログインID'}
@@ -56,7 +56,7 @@ export const LoginForm = () => {
           disabled={inputText === ''}
           onClick={onClickLogin}
         />
-      </dl>
+      </div>
       <ToastContainer />
     </div>
   )
@@ -71,11 +71,19 @@ const wrapper = css`
   position: relative;
   background-color: #fff;
   box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.1);
+  @media screen and (max-width: 767px) {
+    margin: 60px 20px;
+    width: calc(100% - 40px);
+  }
   h2 {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 40px;
     text-align: center;
+    @media screen and (max-width: 767px) {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+    }
   }
 `
 
@@ -88,8 +96,17 @@ const hint = css`
   padding-right: 30px;
   font-weight: 700;
   outline: none;
+  @media screen and (max-width: 767px) {
+    font-size: 1.2rem;
+    top: calc(50% + 35px);
+    right: 10px;
+  }
 `
 
 const hintText = css`
   font-size: 1.4rem;
+  @media screen and (max-width: 767px) {
+    width: 150px;
+    font-size: 1rem;
+  }
 `

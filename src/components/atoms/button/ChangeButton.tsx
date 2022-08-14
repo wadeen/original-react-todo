@@ -17,4 +17,8 @@ const button = css`
   border-radius: 4px;
   padding: 5px 10px;
   color: #ffff;
+   @media screen and (max-width: 767px) {
+    padding: 3px 8px;
+    font-size: 1.4rem;
+  }
 `;

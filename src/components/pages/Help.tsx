@@ -18,9 +18,9 @@ export const Help = () => {
         {loginState.isLogin ? (
           <>
             <p>
-              入力欄に本日のタスクを入れて、入力ボタンを押して下さい。
+              入力欄に本日のタスクを入れて、<br className="br-767"/>入力ボタンを押して下さい。
               <br />
-              未入力タスクに同じタスクが追加された場合は、完了時に統一されます。
+              未入力タスクに同じタスクが追加された場合は、<br className="br-767"/>完了時に統一されます。
             </p>
             <div css={back}>
               <Link to="/todo">ToDoアプリへ戻る</Link>
@@ -48,14 +48,31 @@ const wrapper = css`
   margin: 0 auto;
   padding: 100px 20px;
   text-align: center;
+  @media screen and (max-width: 767px) {
+    padding: 60px 20px;
+  }
   h2 {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 30px;
+    @media screen and (max-width: 767px) {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+    }
   }
   p {
     font-size: 1.8rem;
     line-height: 1.4;
+    @media screen and (max-width: 767px) {
+      font-size: 1.4rem;
+      font-feature-settings: "palt";
+    }
+    .br-767 {
+      display: none;
+      @media screen and (max-width: 767px) {
+        display: block;
+    }
+    }
   }
 `
 
@@ -65,7 +82,12 @@ const back = css`
   color: blue;
   text-decoration: underline;
   transition: 0.3s ease;
+   @media screen and (max-width: 767px) {
+    margin-top: 20px;
+    font-size: 1.4rem;
+   }
   :hover {
     opacity: 0.8;
   }
 `
+

@@ -70,15 +70,23 @@ const wrapper = css`
   width: min(100%, 700px);
   margin: 80px auto;
   padding: 0 20px;
+  @media screen and (max-width: 767px) {
+    margin: 60px 0;
+  }
   h2 {
     font-size: 3rem;
     font-weight: 700;
     list-style: 0.05;
     text-align: center;
     margin-bottom: 30px;
+    @media screen and (max-width: 767px) {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+    }
   }
   span {
     display: block;
     margin: 100px 0;
   }
 `
+

@@ -10,7 +10,7 @@ export const Header = () => {
   const [loginState, setLoginState] = useRecoilState(userState)
 
   const onClickLogout = () => {
-    setLoginState({ isLogin: false, loginUser: "" })
+    setLoginState({ isLogin: false, loginUser: '' })
   }
 
   return (
@@ -53,6 +53,13 @@ const header = css`
   height: 120px;
   background-color: #fff;
   box-shadow: 0 1px 40px 0 rgba(0, 0, 0, 0.05);
+  @media screen and (max-width: 767px) {
+    position: fixed;
+    top: 0;
+    height: 60px;
+    z-index: 10;
+    background-color: whitesmoke;
+  }
 `
 
 const headerContainer = css`
@@ -63,6 +70,9 @@ const headerContainer = css`
   margin: 0 auto;
   height: 100%;
   padding: 0 25px;
+  @media screen and (max-width: 767px) {
+    padding: 0 10px;
+  }
 `
 
 const headerLeft = css`
@@ -71,6 +81,10 @@ const headerLeft = css`
   h1 {
     width: 240px;
     height: 120px;
+    @media screen and (max-width: 767px) {
+      width: 110px;
+      height: 60px;
+    }
     img {
       width: 100%;
       height: 100%;
@@ -84,9 +98,17 @@ const headerRight = css`
     display: flex;
     align-items: center;
     column-gap: 40px;
+    margin-right: 20px;
+    @media screen and (max-width: 767px) {
+      margin-right: 15px;
+      column-gap: 20px;
+    }
     li {
       font-size: 2rem;
       transition: opacity 0.3s ease;
+      @media screen and (max-width: 767px) {
+        font-size: 1.2rem;
+      }
       &:hover {
         opacity: 0.8;
       }
