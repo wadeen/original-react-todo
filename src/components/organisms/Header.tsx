@@ -10,7 +10,7 @@ export const Header = () => {
   const [loginState, setLoginState] = useRecoilState(userState)
 
   const onClickLogout = () => {
-    setLoginState({ isLogin: false })
+    setLoginState({ isLogin: false, loginUser: "" })
   }
 
   return (

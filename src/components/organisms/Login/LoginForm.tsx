@@ -27,7 +27,7 @@ export const LoginForm = () => {
 
   return (
     <div css={wrapper}>
-      <h2>ログインフォーム</h2>
+      <h2>ログイン</h2>
       <dl>
         <LoginInputForm
           type={'text'}
