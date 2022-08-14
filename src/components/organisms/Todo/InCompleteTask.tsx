@@ -14,6 +14,9 @@ export const InCompleteTask: React.FC<Props> = React.memo(
   ({ inCompleteText, completeText, setCompleteText, setInCompleteText }) => {
     // 完了ボタン押下
     const onClickComplete = (todo: string) => {
+      const removeTaskLength = inCompleteText.filter((item) => item == todo)
+      removeTaskLength.length >= 2 &&
+        alert('同じタスクが複数あるため統一されます。')
       setCompleteText([...completeText, todo])
       setInCompleteText(
         inCompleteText.filter((todoTarget: string) => todo !== todoTarget)
@@ -82,10 +85,10 @@ const incompleteTask = css`
 `
 
 const notask = css`
-  text-align:center;
+  text-align: center;
   margin-bottom: -30px;
   padding: 20px 10px;
-`;
+`
 
 const tasks = css`
   color: gray;
