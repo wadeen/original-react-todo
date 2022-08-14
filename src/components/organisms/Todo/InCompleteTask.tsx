@@ -25,21 +25,25 @@ export const InCompleteTask: React.FC<Props> = React.memo(
     return (
       <div css={incompleteTask}>
         <h3>未完了のタスク</h3>
-        <ul>
-          {inCompleteText.map((todo: any) => (
-            <li key={uuidv4()}>
-              {todo}
-              <button
-                css={completeButton}
-                onClick={() => onClickComplete(todo)}
-              >
-                完了
-              </button>
-            </li>
-          ))}
-        </ul>
-        {inCompleteLength === 0 || (
-          <p>⚠️{inCompleteLength}件のタスクが残っています</p>
+        {inCompleteLength === 0 ? (
+          <p css={notask}>本日のタスクを追加して下さい📝</p>
+        ) : (
+          <>
+            <ul>
+              {inCompleteText.map((todo: any) => (
+                <li key={uuidv4()}>
+                  {todo}
+                  <button
+                    css={completeButton}
+                    onClick={() => onClickComplete(todo)}
+                  >
+                    完了
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <p css={tasks}>⚠️{inCompleteLength}件のタスクが残っています</p>
+          </>
         )}
       </div>
     )
@@ -75,17 +79,24 @@ const incompleteTask = css`
       }
     }
   }
-  p {
-    color: gray;
-    font-size: 1.4rem;
-    position: absolute;
-    right: 20px;
-    bottom: 10px;
-  }
+`
+
+const notask = css`
+  text-align:center;
+  margin-bottom: -30px;
+  padding: 20px 10px;
+`;
+
+const tasks = css`
+  color: gray;
+  font-size: 1.4rem;
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
 `
 
 const completeButton = css`
-font-size: 1.5rem;
+  font-size: 1.5rem;
   padding: 4px 8px;
   width: 50px;
   height: 25px;

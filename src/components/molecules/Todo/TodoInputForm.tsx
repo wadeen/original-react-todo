@@ -2,8 +2,6 @@
 import React from 'react'
 import { css } from '@emotion/react'
 
-// import { inputButtonDisabled } from "../../pages/Todo";
-
 type Props = {
   inputText: string
   setInputText: any //✋
