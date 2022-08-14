@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 import { userState } from '../../store/userState'
 
+import logoImage from '../../img/todoLogo.png'
+
 export const Header = () => {
   // Recoil: ログイン有無の状態監視
   const [loginState, setLoginState] = useRecoilState(userState)
@@ -19,7 +21,7 @@ export const Header = () => {
         <div css={headerLeft}>
           <Link to={loginState.isLogin ? '/todo' : '/'}>
             <h1>
-              <img src="../img/todoLogo.png" alt="todoロゴ" />
+              <img src={logoImage} alt="todoロゴ" />
             </h1>
           </Link>
         </div>
