@@ -10,8 +10,6 @@ import { useUserInfo } from '../../../hooks/users/useUserInfo'
 
 import { ToastContainer } from 'react-toastify'
 
-
-
 export const LoginForm = () => {
   const { login, notifyLoginSuccess } = useUserInfo()
 
@@ -72,7 +70,7 @@ const wrapper = css`
   padding: 50px 30px 60px;
   position: relative;
   background-color: #fff;
-  box-shadow: 2px 1px 10px rgba(0,0,0,0.1);
+  box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.1);
   h2 {
     font-size: 3rem;
     font-weight: 700;

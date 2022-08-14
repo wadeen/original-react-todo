@@ -17,7 +17,7 @@ export const Header = () => {
     <header css={header}>
       <div css={headerContainer}>
         <div css={headerLeft}>
-          <Link to={loginState.isLogin ? "/todo" : "/"} >
+          <Link to={loginState.isLogin ? '/todo' : '/'}>
             <h1>
               <img src="../img/todoLogo.png" alt="todoロゴ" />
             </h1>
@@ -28,7 +28,7 @@ export const Header = () => {
           <ul>
             {loginState.isLogin && (
               <li>
-                <Link to="/user_management" >ユーザー設定</Link>
+                <Link to="/user_management">ユーザー設定</Link>
               </li>
             )}
             <li>

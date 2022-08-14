@@ -16,13 +16,13 @@ export const useUserInfo = () => {
   const notifyLoginSuccess = () => toast('ログインに成功しました!')
   const notifyLoginfailed = () => toast('ユーザがー見つかりませんでした')
 
-  const login = useCallback((id: number | string) => {
+  const login = useCallback((id: string) => {
     axios
       .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then((result) => {
         // ログイン成功
         if (result.data.id) {
-          setLoginState({ isLogin: true , loginUser: ""})
+          setLoginState({ isLogin: true , loginUser: id})
           notifyLoginSuccess()
           nav('/todo')
           // ログイン失敗

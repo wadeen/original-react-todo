@@ -35,10 +35,6 @@ export const Todo: React.FC = React.memo(() => {
     setInputText('')
   }
 
-  // useEffect(() => {
-  //   setUserLoginInfo({ isLogin: true, loginUser: '' })
-  // }, [])
-
   return (
     <>
       <Head title={'Todoリスト'} />

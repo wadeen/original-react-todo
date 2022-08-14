@@ -1,45 +1,60 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
+import { css } from '@emotion/react'
 
 import { Head } from '../organisms/Head'
-import { ChangeButton } from '../atoms/button/ChangeButton';
+import { ChangeButton } from '../atoms/button/ChangeButton'
+import { useRecoilState } from 'recoil'
+import { userState } from '../../store/userState'
+
+// Recoil: ログイン有無の状態監視
 
 export const UserManagement = () => {
+  const [loginState, setLoginState] = useRecoilState(userState)
+
   return (
     <div css={wrapper}>
       <Head title={'ユーザー管理'} />
       <h2>ユーザー設定</h2>
-      <div css={settings}>
-        <p>ログイン情報を公開したい<br />→ログインIDに合わせた</p>
-      </div>
-
+      <ul css={loginUser}>
+        <li>ログインユーザー：</li>
+        <li>{loginState.loginUser}</li>
+      </ul>
 
       <dl css={settings}>
         <div>
-        <dt>設定◯◯</dt>
-        <dd><ChangeButton name={"変更"} /></dd>
+          <dt>設定◯◯</dt>
+          <dd>
+            <ChangeButton name={'変更'} />
+          </dd>
         </div>
         <div>
-        <dt>設定◯◯</dt>
-        <dd><ChangeButton name={"変更"} /></dd>
+          <dt>設定◯◯</dt>
+          <dd>
+            <ChangeButton name={'変更'} />
+          </dd>
         </div>
         <div>
-        <dt>設定◯◯</dt>
-        <dd><ChangeButton name={"変更"} /></dd>
+          <dt>設定◯◯</dt>
+          <dd>
+            <ChangeButton name={'変更'} />
+          </dd>
         </div>
         <div>
-        <dt>設定◯◯</dt>
-        <dd><ChangeButton name={"変更"} /></dd>
+          <dt>設定◯◯</dt>
+          <dd>
+            <ChangeButton name={'変更'} />
+          </dd>
         </div>
         <div>
-        <dt>設定◯◯</dt>
-        <dd><ChangeButton name={"変更"} /></dd>
+          <dt>設定◯◯</dt>
+          <dd>
+            <ChangeButton name={'変更'} />
+          </dd>
         </div>
       </dl>
     </div>
   )
 }
-
 
 const wrapper = css`
   width: min(100%, 600px);
@@ -48,11 +63,11 @@ const wrapper = css`
   h2 {
     font-size: 3rem;
     text-align: center;
-    font-weight:700;
+    font-weight: 700;
     line-height: 2;
     border-bottom: 1px solid teal;
   }
-`;
+`
 
 const settings = css`
   /* background-color: orange; */
@@ -67,4 +82,18 @@ const settings = css`
       margin-bottom: 20px;
     }
   }
-`;
+`
+
+const loginUser = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  font-size: 2rem;
+  li {
+    &:last-child {
+      font-size: 2.6rem;
+      font-weight: 700;
+    }
+  }
+`
