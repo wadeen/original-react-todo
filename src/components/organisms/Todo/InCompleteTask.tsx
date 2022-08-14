@@ -85,9 +85,10 @@ const incompleteTask = css`
 `
 
 const completeButton = css`
+font-size: 1.5rem;
   padding: 4px 8px;
   width: 50px;
-  height: 30px;
+  height: 25px;
   text-align: center;
   background-color: #0d6efd;
   border-radius: 4px;
