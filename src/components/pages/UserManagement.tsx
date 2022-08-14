@@ -58,6 +58,8 @@ export const UserManagement = () => {
 const wrapper = css`
   width: min(100%, 600px);
   margin: 60px auto;
+  border: 2px solid teal;
+  border-radius: 5px;
   background-color: #fff;
   @media screen and (max-width: 767px) {
     width: calc(100% - 40px);
