@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { css } from '@emotion/react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -24,7 +24,10 @@ export const InCompleteTask: React.FC<Props> = React.memo(
     }
 
     // 残りのタスクの数
-    const inCompleteLength = inCompleteText.length
+    // useEffect(() => {
+      let inCompleteLength: number = inCompleteText.length
+    // }, [inCompleteText])
+
     return (
       <div css={incompleteTask}>
         <h3>未完了のタスク</h3>
@@ -33,7 +36,7 @@ export const InCompleteTask: React.FC<Props> = React.memo(
         ) : (
           <>
             <ul>
-              {inCompleteText.map((todo: any) => (
+              {inCompleteText.map((todo: string) => (
                 <li key={uuidv4()}>
                   {todo}
                   <button

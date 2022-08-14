@@ -38,15 +38,13 @@ export const CompleteTask: React.FC<Props> = React.memo(
       <div css={completeTask}>
         <h3>完了したタスク</h3>
         <ul>
-          {completeText.map((todo: string, index: any) => (
-            <>
-              <li key={index}>
-                <label className={'todoCheckboxLabel'} css={label}>
-                  <input type="checkbox" className={'checkbox'} />
-                  {todo}
-                </label>
-              </li>
-            </>
+          {completeText.map((todo: string, index: number) => (
+            <li key={index}>
+              <label className={'todoCheckboxLabel'} css={label}>
+                <input type="checkbox" className={'checkbox'} />
+                {todo}
+              </label>
+            </li>
           ))}
         </ul>
         <div css={remove}>
