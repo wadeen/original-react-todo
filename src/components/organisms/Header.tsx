@@ -2,13 +2,22 @@
 import { css } from '@emotion/react'
 
 import { Link } from 'react-router-dom'
+import { useRecoilState } from 'recoil'
+import { userState } from '../../store/userState'
 
 export const Header = () => {
+  // Recoil: ログイン有無の状態監視
+  const [loginState, setLoginState] = useRecoilState(userState)
+
+  const onClickLogout = () => {
+    setLoginState({ isLogin: false })
+  }
+
   return (
     <header css={header}>
       <div css={headerContainer}>
         <div css={headerLeft}>
-          <Link to="/todo">
+          <Link to={loginState.isLogin ? "/todo" : "/"} >
             <h1>
               <img src="../img/todoLogo.png" alt="todoロゴ" />
             </h1>
@@ -17,15 +26,21 @@ export const Header = () => {
 
         <nav css={headerRight}>
           <ul>
-            <li>
-              <Link to="/user_management">ユーザー設定</Link>
-            </li>
+            {loginState.isLogin && (
+              <li>
+                <Link to="/user_management" >ユーザー設定</Link>
+              </li>
+            )}
             <li>
               <Link to="/help">ヘルプ</Link>
             </li>
-            <li>
-              <Link to="/">ログアウト</Link>
-            </li>
+            {loginState.isLogin && (
+              <li>
+                <Link to="/" onClick={onClickLogout}>
+                  ログアウト
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
       </div>
@@ -36,7 +51,7 @@ export const Header = () => {
 const header = css`
   width: 100%;
   height: 120px;
-  background-color:#fff;
+  background-color: #fff;
   box-shadow: 0 1px 40px 0 rgba(0, 0, 0, 0.05);
 `
 

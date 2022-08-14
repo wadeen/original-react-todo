@@ -16,7 +16,7 @@ export const InCompleteTask: React.FC<Props> = React.memo(
     const onClickComplete = (todo: string) => {
       const removeTaskLength = inCompleteText.filter((item) => item == todo)
       removeTaskLength.length >= 2 &&
-        alert('同じタスクが複数あるため統一されます。')
+        alert('未完了タスクに、同じタスクが複数あるため統一されます。')
       setCompleteText([...completeText, todo])
       setInCompleteText(
         inCompleteText.filter((todoTarget: string) => todo !== todoTarget)

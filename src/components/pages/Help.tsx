@@ -2,21 +2,42 @@
 import { css } from '@emotion/react'
 import { Link } from 'react-router-dom'
 import { Head } from '../organisms/Head'
+import { userState } from '../../store/userState'
+import { useRecoilValue } from 'recoil'
 
 export const Help = () => {
+  // Recoil: ログイン有無の状態監視
+  const loginState = useRecoilValue(userState)
+
   return (
     <>
       <Head title={'ヘルプ'} />
       <div css={wrapper}>
         <h2>ヘルプ</h2>
-        <p>
-          1~9の好きな数字をログインIDに入力してください。
-          <br />
-          パスワードは自動入力されます。
-        </p>
-        <div css={back}>
-          <Link to="/">ログインページへ戻る</Link>
-        </div>
+
+        {loginState.isLogin ? (
+          <>
+            <p>
+              入力欄に本日のタスクを入れて、入力ボタンを押して下さい。
+              <br />
+              未入力タスクに同じタスクが追加された場合は、完了時に統一されます。
+            </p>
+            <div css={back}>
+              <Link to="/todo">ToDoアプリへ戻る</Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <p>
+              1~10の好きな数字をログインIDに入力してください。
+              <br />
+              パスワードは自動入力されます。
+            </p>
+            <div css={back}>
+              <Link to="/">ログインページへ戻る</Link>
+            </div>
+          </>
+        )}
       </div>
     </>
   )

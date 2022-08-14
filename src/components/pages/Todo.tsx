@@ -2,7 +2,7 @@
 import React from 'react'
 import { css } from '@emotion/react'
 import { Head } from '../organisms/Head'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -10,16 +10,19 @@ import { TodoInputForm } from '../molecules/Todo/TodoInputForm'
 import { InCompleteTask } from '../organisms/Todo/InCompleteTask'
 import { Spacer } from '../atoms/spacer/Spacer'
 import { CompleteTask } from '../organisms/Todo/CompleteTask'
+import { useRecoilState } from 'recoil'
+import { userState } from '../../store/userState'
 
 export const Todo: React.FC = React.memo(() => {
-  // 入力ボタンの制御
-  // const [disabled, setDisabled] = useState(true)
   // 入力したテキスト
   const [inputText, setInputText] = useState<any>()
   // 未完了テキスト(入力ボタン押下して確定したテキスト)
   const [inCompleteText, setInCompleteText] = useState<string[]>([])
   // 完了したテキスト
   const [completeText, setCompleteText] = useState<string[]>([])
+
+  // Recoil: ログイン有無の状態監視
+  const [userLoginInfo, setUserLoginInfo] = useRecoilState(userState)
 
   // 日時の取得
   let now: any = new Date()
@@ -35,6 +38,7 @@ export const Todo: React.FC = React.memo(() => {
   return (
     <>
       <Head title={'Todoリスト'} />
+
       <div css={wrapper}>
         <h2>【{today}】本日のタスク</h2>
         <TodoInputForm
