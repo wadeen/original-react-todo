@@ -11,9 +11,11 @@ import { InCompleteTask } from '../organisms/Todo/InCompleteTask'
 import { Spacer } from '../atoms/spacer/Spacer'
 import { CompleteTask } from '../organisms/Todo/CompleteTask'
 
+// import { useCookies } from 'react-cookie'
+
 export const Todo: React.FC = React.memo(() => {
   // 入力したテキスト
-  const [inputText, setInputText] = useState<string>('')
+  const [inputText, setInputText] = useState('')
   // 未完了テキスト(入力ボタン押下して確定したテキスト)
   const [inCompleteText, setInCompleteText] = useState<string[]>([])
   // 完了したテキスト
@@ -23,10 +25,13 @@ export const Todo: React.FC = React.memo(() => {
   let now: Date = new Date()
   let today = `${now.getMonth() + 1}/${now.getDate()}`
 
+  // const [cookies, setCookie] = useCookies(['inCompleteText'])
+
   // 入力ボタン押下
   const onClickInutAdd = () => {
     if (inputText == '') return
     setInCompleteText([...inCompleteText, inputText])
+    // setCookie('inCompleteText', inCompleteText)
     setInputText('')
   }
 

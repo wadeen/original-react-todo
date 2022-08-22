@@ -21,6 +21,7 @@ export const LoginForm = () => {
 
   const onClickLogin = () => {
     login(inputText)
+    notifyLoginSuccess()
   }
 
   return (
