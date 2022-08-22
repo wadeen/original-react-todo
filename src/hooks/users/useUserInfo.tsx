@@ -41,5 +41,5 @@ export const useUserInfo = () => {
       })
   }, [])
 
-  return { login, notifyLoginSuccess }
+  return { login }
 }

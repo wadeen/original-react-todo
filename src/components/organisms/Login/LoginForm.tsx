@@ -11,7 +11,7 @@ import { useUserInfo } from '../../../hooks/users/useUserInfo'
 import { ToastContainer } from 'react-toastify'
 
 export const LoginForm = () => {
-  const { login, notifyLoginSuccess } = useUserInfo()
+  const { login } = useUserInfo()
 
   const [inputText, setInputText] = useState('')
 
@@ -21,7 +21,6 @@ export const LoginForm = () => {
 
   const onClickLogin = () => {
     login(inputText)
-    notifyLoginSuccess()
   }
 
   return (
