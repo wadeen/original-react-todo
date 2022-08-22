@@ -27,7 +27,7 @@ React学習中で、アウトプットのためにToDoアプリを制作しま�
 [わでぃん](https://github.com/wadeen)
 
 ## 公開URL
-http://portfolio.goo-tech.net/react-todo/
+https://original-react-todo.vercel.app/
 
 <!-- ### `npm start` -->
 
