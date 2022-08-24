@@ -25,13 +25,10 @@ export const Todo: React.FC = React.memo(() => {
   let now: Date = new Date()
   let today = `${now.getMonth() + 1}/${now.getDate()}`
 
-  // const [cookies, setCookie] = useCookies(['inCompleteText'])
-
   // 入力ボタン押下
   const onClickInutAdd = () => {
     if (inputText == '') return
     setInCompleteText([...inCompleteText, inputText])
-    // setCookie('inCompleteText', inCompleteText)
     setInputText('')
   }
 

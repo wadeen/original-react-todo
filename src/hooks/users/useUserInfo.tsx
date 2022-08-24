@@ -8,15 +8,11 @@ import 'react-toastify/dist/ReactToastify.css'
 import { useRecoilState } from 'recoil'
 import { userState } from '../../store/userState'
 
-// import { useCookies } from 'react-cookie'
-
 // ToDoアプリのログイン関連の処理
 export const useUserInfo = () => {
   const nav = useNavigate()
-  // const setLoginState = useRecoilState(userState) //Cookie動作確認後削除予定
+  // const setLoginState = useRecoilState(userState)
   const [loginState, setLoginState] = useRecoilState(userState)
-
-  // const [cookies, setCookie] = useCookies(['loginInfo'])
 
   const notifyLoginSuccess = () => toast('ログインに成功しました!')
   const notifyLoginfailed = () => toast('ユーザがー見つかりませんでした')
@@ -28,7 +24,6 @@ export const useUserInfo = () => {
         // ログイン成功
         if (result.data.id) {
           setLoginState({ isLogin: true, loginUser: id })
-          // setCookie('loginInfo', notifyLoginSuccess)
           notifyLoginSuccess()
           nav('/todo')
           // ログイン失敗
